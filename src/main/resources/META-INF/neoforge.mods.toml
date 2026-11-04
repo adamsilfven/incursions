@@ -3,7 +3,7 @@ loaderVersion="[4,)"
 license="All Rights Reserved"
 [[mods]]
 modId="incursions"
-version="1.0.1"
+version="1.0.3"
 displayName="Incursions"
 authors="Adam Silfven"
 description='''Configurable incursions from active portals and lodestone anchors.'''

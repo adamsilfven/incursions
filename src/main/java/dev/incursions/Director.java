@@ -43,6 +43,25 @@ final class Director {
             active.open();
         }
     }
+    String trigger(String dimension, boolean forceElite) {
+        if(active!=null) return "An incursion is already active";
+        if(!allowed()) return "Incursions are disabled by server settings or game rules";
+        var profile=Definitions.current.profiles().values().stream()
+            .filter(p->p.id().getPath().equals("profiles/"+dimension)).findFirst().orElse(null);
+        if(profile==null) return "Dimension profile unavailable: "+dimension;
+        var eligible=origins.eligible(profile,players());
+        if(eligible.isEmpty()) return "No eligible active portal or anchor found for "+dimension+" (use /incursions origins)";
+        var site=eligible.get(rng.nextInt(eligible.size()));
+        active=new Encounter(this,profile,site);
+        active.open(forceElite);
+        Incursions.LOG.info("Operator manually triggered {} (forced elite: {})",profile.id(),forceElite);
+        return "Manually started "+profile.id()+" at "+site.center().toShortString()+(forceElite?" with guaranteed elite":"");
+    }
+    String cancel() {
+        if(active==null) return "No incursion is active";
+        active.fail("operator_stop");
+        return "Active incursion stopped (no victory rewards)";
+    }
     void ended(Encounter encounter, String reason) {
         if(active!=encounter) return;
         lastEnd=encounter.profile.id()+": "+reason+"; wave "+(encounter.fight==null?0:encounter.fight.wave)+"/"+encounter.totalWaves+"; enhanced spawned "+encounter.enhancedSpawned;
