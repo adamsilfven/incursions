@@ -1,0 +1,28 @@
+# Configuration
+
+Stop Minecraft or the dedicated server before editing `incursions-server.toml`. The tested loader generated it in `config`; also check the world's `serverconfig` directory if your setup stores server configuration there.
+
+| Key | Default | Meaning |
+| --- | --- | --- |
+| `enabled` | `true` | Allows new encounters; disabling ends an active encounter without rewards |
+| `scanIntervalTicks` | `100` | Checks for a trigger every five seconds at normal tick speed |
+| `sharedCooldownTicks` | `21600` | Eighteen minutes after an encounter ends |
+| `respectDoMobSpawning` | `true` | Respects the spawning gamerule |
+| `sectionsPerTick` | `4` | Limits chunk sections examined per tick |
+| `scaling` | `PLAYER_SCALED` | Uses player-based encounter scaling |
+| `preventIncursionUthericInfection` | `true` | Protects against infection buildup from new incursion attackers |
+| `debugLogging` | `false` | Leaves detailed scan diagnostics disabled |
+
+These values do not change Minecraft's global tick rate. Trigger checks are separate from the 40-tick spawning interval stored in built-in wave schedules.
+
+## Pause-menu setting
+
+With Incursions installed on the client, use its pause-menu button to view the enabled setting. The single-player owner and server operators can change it. Other players cannot toggle the server's encounters.
+
+## Resetting test values
+
+Replacing the JAR leaves saved settings in place. The release package includes the approved TOML and a Windows reset helper. Close the game first and read the helper's instructions: it backs up existing files and resets standard Incursions configuration locations, including saved worlds in the chosen instance. It does not remove custom datapacks.
+
+## Datapacks
+
+Profiles, origins, pools, schedules, and rewards live under `data/incursions/incursions/`. Custom definitions can override built-ins and affect future encounters after a reload. Old default-override packs can retain old timing and loot even after a mod update.

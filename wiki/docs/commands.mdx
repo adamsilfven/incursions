@@ -1,0 +1,27 @@
+# Commands and Troubleshooting
+
+The following commands require operator permission level 2:
+
+| Command | Purpose |
+| --- | --- |
+| `/incursions status` | Shows the active encounter or remaining cooldown and last result |
+| `/incursions origins` | Lists eligible profiles, recognized sources, and trigger chances |
+| `/incursions validate` | Reports loaded definitions and definition problems |
+
+## Nothing is happening
+
+Check that Incursions is enabled, difficulty is not Peaceful, and `doMobSpawning` permits spawning when the mod is set to respect it. Confirm the portal is active, loaded, near a living player, and has safe emergence space. The cooldown and chance rolls can both delay an encounter.
+
+For an optional dimension, verify the mod is installed and its profile is enabled. Use the commands above before assuming an intact-looking portal is eligible.
+
+## Old test timing remains
+
+Check saved `incursions-server.toml` files and any datapacks overriding Incursions profiles or schedules. Replacing the JAR does not remove either kind of override.
+
+## No pause-menu button
+
+The button requires Incursions on the client. Server-only installation can still run encounters. Changing the server setting requires the single-player owner or an operator.
+
+## Reporting a problem
+
+Include Minecraft, NeoForge, and Incursions versions, optional dimension mods, relevant server logs, and the output of the commands above. Mention custom configs or datapacks. Remove private information before sharing logs.

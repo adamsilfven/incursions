@@ -1,0 +1,33 @@
+# Encounters
+
+The server checks for a possible incursion every 100 ticks by default: five seconds at the normal 20 ticks per second. A check is a chance to trigger an encounter, not a guarantee that one will start.
+
+## Trigger chances
+
+| Profile | Chance per eligible check |
+| --- | --- |
+| Nether | 2% |
+| Aether | 1% |
+| Undergarden | 1% |
+| Twilight Forest | 1% |
+
+Nether has first priority when its roll succeeds. A failed Nether roll does not prevent the other eligible profiles from rolling. If several nonpriority profiles succeed, one is selected. Sources belonging to the same profile do not each receive an extra chance.
+
+## Waves
+
+| Profile | Waves | Spawning window per wave |
+| --- | --- | --- |
+| Nether | 2–3 | 8 seconds |
+| Aether | 1 | 14 seconds |
+| Undergarden | 2–3 | 8 seconds |
+| Twilight Forest | 1 | 14 seconds |
+
+Built-in spawning rolls occur every 40 ticks, or two seconds. Each roll has a 55% chance of one ordinary enemy, 25% chance of two, and 20% chance of none. Multiwave encounters wait ten seconds between cleared waves. Pending required arrivals must also resolve before a wave or encounter can finish.
+
+Enhanced enemies and an empty wave's surprise arrivals can make a quiet opening misleading. The current profiles use a 15% enhanced-enemy chance and a 600-tick arrival delay. A wave that produces no ordinary enemies schedules two enhanced arrivals. Undergarden encounters also have a separate rare Rotbeast opportunity.
+
+## Ending an encounter
+
+Victory requires resolving the encounter's required enemies and pending arrivals. Dying does not immediately reset the encounter. Leaving it without a living participant nearby long enough causes failure. The shared cooldown begins when the encounter ends, whether through victory or failure.
+
+Peaceful difficulty, disabling Incursions, or a respected `doMobSpawning` restriction stops an active encounter without a victory reward. Restarting the server ends the active encounter and resets its in-memory cooldown.

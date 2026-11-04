@@ -1,0 +1,22 @@
+# Portals and Anchors
+
+An eligible source must be loaded, near a living player, and provide safe space for enemies to emerge. Incursions checks active portal blocks; an unlit frame or an incomplete portal is not enough. It does not force-load chunks to find portals.
+
+| Source | Required mod |
+| --- | --- |
+| Active Nether portal | Vanilla Minecraft |
+| Active Aether portal | The Aether |
+| Active Undergarden portal | The Undergarden |
+| Active Twilight Forest portal | Twilight Forest |
+
+## Lodestone anchor
+
+Place one lodestone in the center of a three-by-three square. Surround it with eight matching stair blocks at the same height. All eight stairs must be the same block type; stair facing does not matter. Leave safe room around the anchor for attackers to spawn.
+
+The anchor can supply any installed and enabled encounter profile. It does not unlock a missing dimension mod or create a separate creature pool.
+
+## More portals
+
+Additional portals of the same type do not multiply that profile's trigger chance. The server permits one active incursion at a time, and all sources share an 18-minute cooldown after an encounter ends. Building a wall of portals will not give each one its own reward timer.
+
+Use `/incursions origins` as an operator to inspect recognized sources and eligible profiles.
