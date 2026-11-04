@@ -66,12 +66,13 @@ final class Encounter implements Rules.World {
         }
     }
     List<ServerPlayer> nearby() { return director.players().stream().filter(p->site.near(p,96)).toList(); }
-    void open() {
+    void open() { open(false); }
+    void open(boolean forceElite) {
         int waves=profile.minWaves()+director.rng.nextInt(profile.maxWaves()-profile.minWaves()+1);
         totalWaves=waves;
         boolean rare=profile.rare()!=null && director.rng.nextDouble()<profile.rareChance();
-        boolean rareElite=rare && director.rng.nextDouble()<profile.rareEliteChance();
-        boolean normal=director.rng.nextDouble()<profile.eliteChance();
+        boolean rareElite=!forceElite && rare && director.rng.nextDouble()<profile.rareEliteChance();
+        boolean normal=forceElite || director.rng.nextDouble()<profile.eliteChance();
         fight=new Rules.Fight(new Rules.Schedule(waves,profile.seconds(),profile.gap(),profile.eliteDelay(),profile.zero(),profile.one(),normal,rare,rareElite,profile.spawnInterval()),director.rng,director.time,this);
         announce(profile.title());effect(false);
         for(var player:nearby()) {
