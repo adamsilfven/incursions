@@ -47,7 +47,7 @@ final class Director {
         if(active!=null) return "An incursion is already active";
         if(!allowed()) return "Incursions are disabled by server settings or game rules";
         var profile=Definitions.current.profiles().values().stream()
-            .filter(p->p.id().getPath().equals(dimension)).findFirst().orElse(null);
+            .filter(p->p.id().getPath().equals("profiles/"+dimension)).findFirst().orElse(null);
         if(profile==null) return "Dimension profile unavailable: "+dimension;
         var eligible=origins.eligible(profile,players());
         if(eligible.isEmpty()) return "No eligible active portal or anchor found for "+dimension+" (use /incursions origins)";
