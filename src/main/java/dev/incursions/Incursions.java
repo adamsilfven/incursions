@@ -35,8 +35,25 @@ public final class Incursions {
     private void started(ServerStartedEvent e) { director=new Director(e.getServer()); }
     private void stopping(ServerStoppingEvent e) { if(director!=null) director.stop(); director=null; }
     private void tick(ServerTickEvent.Post e) { if(director!=null) director.tick(); }
+    private int trigger(net.minecraft.commands.CommandSourceStack source,String dimension,boolean elite) {
+        source.sendSuccess(()->Component.literal(director==null?"Server not ready":director.trigger(dimension,elite)),false);
+        return Command.SINGLE_SUCCESS;
+    }
     private void commands(RegisterCommandsEvent e) {
         e.getDispatcher().register(Commands.literal("incursions").requires(s->s.hasPermission(2))
+            .then(Commands.literal("trigger")
+                .then(Commands.literal("nether").executes(c->trigger(c.getSource(),"nether",false))
+                    .then(Commands.literal("elite").executes(c->trigger(c.getSource(),"nether",true))))
+                .then(Commands.literal("aether").executes(c->trigger(c.getSource(),"aether",false))
+                    .then(Commands.literal("elite").executes(c->trigger(c.getSource(),"aether",true))))
+                .then(Commands.literal("undergarden").executes(c->trigger(c.getSource(),"undergarden",false))
+                    .then(Commands.literal("elite").executes(c->trigger(c.getSource(),"undergarden",true))))
+                .then(Commands.literal("twilight").executes(c->trigger(c.getSource(),"twilight",false))
+                    .then(Commands.literal("elite").executes(c->trigger(c.getSource(),"twilight",true)))))
+            .then(Commands.literal("stop").executes(c->{
+                c.getSource().sendSuccess(()->Component.literal(director==null?"Server not ready":director.cancel()),false);
+                return Command.SINGLE_SUCCESS;
+            }))
             .then(Commands.literal("status").executes(c->{ c.getSource().sendSuccess(()->Component.literal(director==null?"Server not ready":director.status()),false);return Command.SINGLE_SUCCESS; }))
             .then(Commands.literal("origins").executes(c->{if(director==null)c.getSource().sendSuccess(()->Component.literal("Server not ready"),false); else director.originReport().forEach(line->c.getSource().sendSuccess(()->Component.literal(line),false));return 1;}))
             .then(Commands.literal("validate").executes(c->{
