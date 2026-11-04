@@ -1,0 +1,19 @@
+#Enable triggers; disabling ends an active encounter without rewards.
+enabled = true
+# Default: 100
+# Range: 20 ~ 12000
+scanIntervalTicks = 100
+#Shared cooldown starts at success/failure; not persisted on restart.
+# Default: 21600
+# Range: 0 ~ 1728000
+sharedCooldownTicks = 21600
+respectDoMobSpawning = true
+#Maximum 16x16x16 chunk sections examined per tick. Never loads chunks.
+# Default: 4
+# Range: 1 ~ 16
+sectionsPerTick = 4
+#Allowed Values: FIXED, PLAYER_SCALED, DIFFICULTY_SCALED
+scaling = "PLAYER_SCALED"
+#Prevent Utheric Infection buildup from newly spawned incursion enemies only. Does not cure existing infection or change ordinary Undergarden mobs/biomes.
+preventIncursionUthericInfection = true
+debugLogging = false

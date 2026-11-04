@@ -1,0 +1,25 @@
+{
+  "kind": "reward_pool",
+  "entries": [
+    {
+      "table": "incursions:rewards/nether_fortress",
+      "weight": 20,
+      "rolls": 1
+    },
+    {
+      "table": "incursions:rewards/nether_bastion_other",
+      "weight": 30,
+      "rolls": 1
+    },
+    {
+      "table": "incursions:rewards/nether_hoglin_stable",
+      "weight": 25,
+      "rolls": 1
+    },
+    {
+      "table": "minecraft:chests/bastion_treasure",
+      "weight": 25,
+      "rolls": 1
+    }
+  ]
+}

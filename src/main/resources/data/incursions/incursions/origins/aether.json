@@ -1,0 +1,9 @@
+{
+  "kind": "origin",
+  "provider": "vertical",
+  "block": "aether:aether_portal",
+  "dimensions": [],
+  "emergence_radius": 8,
+  "required_mod": "aether",
+  "frame": "#aether:aether_portal_blocks"
+}

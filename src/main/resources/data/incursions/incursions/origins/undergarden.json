@@ -1,0 +1,9 @@
+{
+  "kind": "origin",
+  "provider": "vertical",
+  "block": "undergarden:undergarden_portal",
+  "dimensions": [],
+  "emergence_radius": 8,
+  "required_mod": "undergarden",
+  "frame": "#undergarden:portal_frame_blocks"
+}

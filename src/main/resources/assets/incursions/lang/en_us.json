@@ -1,0 +1,15 @@
+{
+  "entity.incursions.elite": "Elite %s",
+  "incursions.settings.title": "Incursions",
+  "incursions.settings.loading": "Checking server\u2026",
+  "incursions.settings.on": "Incursions: ON",
+  "incursions.settings.off": "Incursions: OFF",
+  "incursions.settings.scope": "Applies to this world or everyone on this server. Changes save immediately.",
+  "incursions.settings.readonly": "Only the world owner or a server operator can change this setting.",
+  "incursions.settings.warning": "Turning this off ends an active incursion without victory rewards.",
+  "incursions.settings.unavailable": "This server does not support the Incursions settings screen.",
+  "incursions.settings.failed": "Could not save the setting. The previous value was restored.",
+  "incursions.settings.timeout": "The server did not respond. Rechecking\u2026",
+  "incursions.chat.settings": "Toggle Incursions with the I button in the pause menu. On servers, an operator must change this setting.",
+  "incursions.chat.config": "The world owner or server operator can turn Incursions off in the server configuration."
+}

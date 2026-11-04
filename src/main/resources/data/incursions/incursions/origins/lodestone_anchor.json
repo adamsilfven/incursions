@@ -1,0 +1,7 @@
+{
+  "kind": "origin",
+  "provider": "anchor",
+  "block": "minecraft:lodestone",
+  "dimensions": [],
+  "emergence_radius": 8
+}

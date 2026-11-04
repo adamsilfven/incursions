@@ -1,0 +1,8 @@
+{
+  "kind": "origin",
+  "provider": "vertical",
+  "block": "minecraft:nether_portal",
+  "dimensions": [],
+  "emergence_radius": 8,
+  "frame": "minecraft:obsidian"
+}

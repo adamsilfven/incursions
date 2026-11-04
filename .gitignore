@@ -1,0 +1,15 @@
+# Build and local tooling
+.gradle/
+build/
+out/
+.idea/
+*.iml
+.vscode/
+# Local game instances and diagnostics
+run*/
+logs/
+crash-reports/
+*.log
+# OS files
+.DS_Store
+Thumbs.db

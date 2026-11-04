@@ -1,0 +1,8 @@
+{
+  "kind": "origin",
+  "provider": "horizontal",
+  "block": "twilightforest:twilight_portal",
+  "dimensions": [],
+  "emergence_radius": 8,
+  "required_mod": "twilightforest"
+}

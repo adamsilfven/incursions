@@ -1,0 +1,31 @@
+{
+  "kind": "creature_pool",
+  "entries": [
+    {
+      "entity": "twilightforest:helmet_crab",
+      "weight": 35,
+      "flying": false
+    },
+    {
+      "entity": "twilightforest:slime_beetle",
+      "weight": 25,
+      "flying": false
+    },
+    {
+      "entity": "twilightforest:minotaur",
+      "weight": 20,
+      "flying": false
+    },
+    {
+      "entity": "twilightforest:blockchain_goblin",
+      "weight": 10,
+      "flying": false
+    },
+    {
+      "entity": "twilightforest:skeleton_druid",
+      "weight": 10,
+      "flying": false
+    }
+  ],
+  "required_mod": "twilightforest"
+}

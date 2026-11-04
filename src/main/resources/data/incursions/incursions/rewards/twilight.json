@@ -1,0 +1,26 @@
+{
+  "kind": "reward_pool",
+  "entries": [
+    {
+      "table": "incursions:rewards/twilight_room",
+      "weight": 35,
+      "rolls": 1
+    },
+    {
+      "table": "incursions:rewards/twilight_library",
+      "weight": 25,
+      "rolls": 1
+    },
+    {
+      "table": "incursions:rewards/twilight_potion",
+      "weight": 25,
+      "rolls": 1
+    },
+    {
+      "table": "incursions:rewards/twilight_cache",
+      "weight": 15,
+      "rolls": 1
+    }
+  ],
+  "required_mod": "twilightforest"
+}

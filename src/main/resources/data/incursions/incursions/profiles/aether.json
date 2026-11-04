@@ -1,0 +1,26 @@
+{
+  "kind": "profile",
+  "origins": [
+    "incursions:origins/aether",
+    "incursions:origins/lodestone_anchor"
+  ],
+  "creature_pool": "incursions:pools/aether",
+  "reward_pool": "incursions:rewards/aether",
+  "trigger_chance": 0.01,
+  "nether_first": false,
+  "elite_chance": 0.15,
+  "elite_delay_ticks": 600,
+  "elite_health_multiplier": 1.75,
+  "elite_damage_multiplier": 1.3,
+  "opening_title": "The Aether Portal Is Breaching!",
+  "particle": "minecraft:end_rod",
+  "scaling": "GLOBAL",
+  "per_player_rewards": false,
+  "required_mod": "aether",
+  "wave_schedule": "incursions:schedules/aether",
+  "opening_sound": "minecraft:block.portal.trigger",
+  "victory_sound": "minecraft:ui.toast.challenge_complete",
+  "elite_sound": "minecraft:entity.evoker.prepare_attack",
+  "elite_name_color": "gold",
+  "zero_pair_sound": "minecraft:block.end_portal.spawn"
+}

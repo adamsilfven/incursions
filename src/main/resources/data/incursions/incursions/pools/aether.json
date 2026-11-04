@@ -1,0 +1,31 @@
+{
+  "kind": "creature_pool",
+  "entries": [
+    {
+      "entity": "aether:cockatrice",
+      "weight": 20,
+      "flying": false
+    },
+    {
+      "entity": "aether:mimic",
+      "weight": 30,
+      "flying": false
+    },
+    {
+      "entity": "aether:sentry",
+      "weight": 45,
+      "flying": false
+    },
+    {
+      "entity": "aether:blue_swet",
+      "weight": 2.5,
+      "flying": false
+    },
+    {
+      "entity": "aether:golden_swet",
+      "weight": 2.5,
+      "flying": false
+    }
+  ],
+  "required_mod": "aether"
+}

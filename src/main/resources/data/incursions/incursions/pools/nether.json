@@ -1,0 +1,35 @@
+{
+  "kind": "creature_pool",
+  "entries": [
+    {
+      "entity": "minecraft:piglin",
+      "weight": 50,
+      "flying": false
+    },
+    {
+      "entity": "minecraft:wither_skeleton",
+      "weight": 10,
+      "flying": false
+    },
+    {
+      "entity": "minecraft:zombified_piglin",
+      "weight": 15,
+      "flying": false
+    },
+    {
+      "entity": "minecraft:piglin_brute",
+      "weight": 10,
+      "flying": false
+    },
+    {
+      "entity": "minecraft:blaze",
+      "weight": 10,
+      "flying": true
+    },
+    {
+      "entity": "minecraft:hoglin",
+      "weight": 5,
+      "flying": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "wave_schedule",
+  "min_waves": 2,
+  "max_waves": 3,
+  "window_seconds": 8,
+  "interwave_ticks": 200,
+  "zero_probability": 0.2,
+  "one_probability": 0.55,
+  "two_probability": 0.25,
+  "spawn_interval_ticks": 40
+}

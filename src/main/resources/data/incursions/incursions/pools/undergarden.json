@@ -1,0 +1,31 @@
+{
+  "kind": "creature_pool",
+  "entries": [
+    {
+      "entity": "undergarden:rotling",
+      "weight": 25,
+      "flying": false
+    },
+    {
+      "entity": "undergarden:rotwalker",
+      "weight": 20,
+      "flying": false
+    },
+    {
+      "entity": "undergarden:nargoyle",
+      "weight": 20,
+      "flying": false
+    },
+    {
+      "entity": "undergarden:sploogie",
+      "weight": 20,
+      "flying": false
+    },
+    {
+      "entity": "undergarden:forgotten",
+      "weight": 15,
+      "flying": false
+    }
+  ],
+  "required_mod": "undergarden"
+}

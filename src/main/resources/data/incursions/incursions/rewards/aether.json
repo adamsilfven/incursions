@@ -1,0 +1,26 @@
+{
+  "kind": "reward_pool",
+  "entries": [
+    {
+      "table": "incursions:rewards/aether_bronze",
+      "weight": 15,
+      "rolls": 1
+    },
+    {
+      "table": "incursions:rewards/aether_silver",
+      "weight": 30,
+      "rolls": 1
+    },
+    {
+      "table": "aether:chests/dungeon/silver/silver_dungeon_reward",
+      "weight": 35,
+      "rolls": 1
+    },
+    {
+      "table": "aether:chests/dungeon/gold/gold_dungeon_reward",
+      "weight": 20,
+      "rolls": 1
+    }
+  ],
+  "required_mod": "aether"
+}

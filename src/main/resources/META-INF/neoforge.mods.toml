@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+[[mods]]
+modId="incursions"
+version="1.0.1"
+displayName="Incursions"
+authors="Adam Silfven"
+description='''Configurable incursions from active portals and lodestone anchors.'''
+[[dependencies.incursions]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.259,21.2)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.incursions]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.21.2)"
+ordering="NONE"
+side="BOTH"
+
+[[mixins]]
+config="incursions.mixins.json"

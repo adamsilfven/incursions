@@ -1,0 +1,21 @@
+{
+  "kind": "reward_pool",
+  "entries": [
+    {
+      "table": "incursions:rewards/undergarden_mine",
+      "weight": 25,
+      "rolls": 1
+    },
+    {
+      "table": "incursions:rewards/undergarden_catacombs",
+      "weight": 50,
+      "rolls": 1
+    },
+    {
+      "table": "incursions:rewards/undergarden_mound",
+      "weight": 25,
+      "rolls": 1
+    }
+  ],
+  "required_mod": "undergarden"
+}
