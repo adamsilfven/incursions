@@ -48,6 +48,9 @@ final class Encounter implements Rules.World {
         return spaceCache.computeIfAbsent(new Body(width,height,flying),k->SpawnSpace.reachable(site,width,height,flying,director.players()));
     }
     private long absentSince=-1;
+    private long obstructedSince=-1;
+    private final Map<UUID,Long> missingSince=new HashMap<>();
+    private final Map<UUID,net.minecraft.core.BlockPos> lastKnown=new HashMap<>();
     private boolean finished;
     Encounter(Director d, Definitions.Profile profile, Origins.Site site) {
         director=d;this.profile=profile;this.site=site;
@@ -73,7 +76,7 @@ final class Encounter implements Rules.World {
         boolean rare=profile.rare()!=null && director.rng.nextDouble()<profile.rareChance();
         boolean rareElite=!forceElite && rare && director.rng.nextDouble()<profile.rareEliteChance();
         boolean normal=forceElite || director.rng.nextDouble()<profile.eliteChance();
-        fight=new Rules.Fight(new Rules.Schedule(waves,profile.seconds(),profile.gap(),profile.eliteDelay(),profile.zero(),profile.one(),normal,rare,rareElite,profile.spawnInterval()),director.rng,director.time,this);
+        fight=new Rules.Fight(new Rules.Schedule(waves,profile.seconds(),profile.gap(),forceElite?0:profile.eliteDelay(),profile.zero(),profile.one(),normal,rare,rareElite,profile.spawnInterval()),director.rng,director.time,this);
         announce(profile.title());effect(false);
         for(var player:nearby()) {
             boolean hasMenu=player.connection.getConnection()!=null
@@ -97,7 +100,10 @@ final class Encounter implements Rules.World {
             if(director.time-absentSince>=600) {fail("abandoned");return;}
         } else absentSince=-1;
         if(director.time%20==0) {
-            if(space(.6f,1.8f,false).isEmpty()) {fail("origin_obstructed");return;}
+            if(space(.6f,1.8f,false).isEmpty()) {
+                if(obstructedSince<0) obstructedSince=director.time;
+                if(director.time-obstructedSince>=600) {fail("origin_obstructed_for_30_seconds");return;}
+            } else obstructedSince=-1;
             maintain(players);
             if(finished) return;
         }
@@ -106,8 +112,22 @@ final class Encounter implements Rules.World {
     private void maintain(List<ServerPlayer> players) {
         for(var iterator=tracked.entrySet().iterator();iterator.hasNext();) {
             var e=iterator.next();Mob mob=e.getValue();
-            if((!mob.isAlive() && mob.getHealth()<=0) || SentryGuard.resolved(mob)) { iterator.remove();unreachable.remove(e.getKey());continue; }
-            if(mob.isRemoved() || !site.level().hasChunkAt(mob.blockPosition()) || site.level().getEntity(e.getKey())!=mob) {fail("required_enemy_removed_or_unloaded");return;}
+            if((!mob.isAlive() && mob.getHealth()<=0) || SentryGuard.resolved(mob)) {
+                iterator.remove();unreachable.remove(e.getKey());missingSince.remove(e.getKey());lastKnown.remove(e.getKey());continue;
+            }
+            if(mob.isRemoved() || !site.level().hasChunkAt(mob.blockPosition()) || site.level().getEntity(e.getKey())!=mob) {
+                long since=missingSince.computeIfAbsent(e.getKey(),k->director.time);
+                var pos=lastKnown.getOrDefault(e.getKey(),mob.blockPosition());
+                if(site.level().hasChunkAt(pos)) {
+                    var recovered=site.level().getEntity(e.getKey());
+                    if(recovered instanceof Mob replacement && replacement.isAlive()) {
+                        e.setValue(replacement);missingSince.remove(e.getKey());continue;
+                    }
+                }
+                if(director.time-since>=600) {fail("required_enemy_missing_for_30_seconds");return;}
+                continue;
+            }
+            missingSince.remove(e.getKey());lastKnown.put(e.getKey(),mob.blockPosition());
             if(mob.level()!=site.level()) {fail("required_enemy_changed_dimension");return;}
             ServerPlayer target=players.stream().min(Comparator.comparingDouble(mob::distanceToSqr)).orElse(null);
             if(target==null) continue;
@@ -219,6 +239,7 @@ final class Encounter implements Rules.World {
         }
         if(!site.level().addFreshEntity(mob)) {mob.discard();return false;}
         tracked.put(mob.getUUID(),mob);
+        lastKnown.put(mob.getUUID(),mob.blockPosition());
         if(kind==Rules.Kind.ENHANCED || kind==Rules.Kind.RARE_ENHANCED) {
             enhancedSpawned++;
             Incursions.LOG.info("Incursion {} enhanced arrival: {} UUID {}, health {}, damage multiplier {}",id,entry.entity(),mob.getUUID(),mob.getMaxHealth(),profile.damage());
@@ -233,6 +254,9 @@ final class Encounter implements Rules.World {
         if(success) {
             announce("Incursion Repelled!");effect(true);
             payout();
+        } else {
+            for(var player:nearby()) player.sendSystemMessage(Component.literal("Incursion ended without victory: "+reason).withStyle(net.minecraft.ChatFormatting.RED));
+            Incursions.LOG.warn("Incursion {} ended without victory: {}",id,reason);
         }
         for(Mob mob:tracked.values()) {
             mob.getPersistentData().remove("incursions_session");
@@ -240,7 +264,7 @@ final class Encounter implements Rules.World {
             if(mob instanceof AbstractPiglin p) p.setImmuneToZombification(zombieImmunity.getOrDefault(mob.getUUID(),false));
             if(mob instanceof Hoglin h) h.setImmuneToZombification(zombieImmunity.getOrDefault(mob.getUUID(),false));
         }
-        tracked.clear();unreachable.clear();reserved.clear();
+        tracked.clear();unreachable.clear();reserved.clear();missingSince.clear();lastKnown.clear();
         director.ended(this,reason);
     }
     private void payout() {
