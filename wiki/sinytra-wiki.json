@@ -1,0 +1,11 @@
+{
+  "schema": "1",
+  "id": "incursions",
+  "modid": "incursions",
+  "platforms": {
+    "curseforge": "incursions"
+  },
+  "owners": [
+    "adamsilfven"
+  ]
+}
