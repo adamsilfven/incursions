@@ -20,6 +20,26 @@ Install the release JAR in the server's `mods` folder, or in your client for sin
 
 The encounters run on the server. Clients can join without installing Incursions; install it on the client as well to use its pause-menu settings button. Server operators and the single-player owner can change the enable setting. Other players cannot change the server's setting.
 
+## Operator commands (1.0.3)
+
+Commands require operator permission level 2 and are executed on the server:
+
+```mcfunction
+/incursions trigger nether
+/incursions trigger nether elite
+/incursions trigger aether
+/incursions trigger undergarden
+/incursions trigger twilight
+/incursions status
+/incursions origins
+/incursions validate
+/incursions stop
+```
+
+Use `/incursions trigger <nether|aether|undergarden|twilight> [elite]` for any supported dimension profile. The `elite` suffix requests an immediate forced elite. A trigger works only when that profile is available and has an eligible active portal or lodestone anchor. `status` shows encounter/cooldown state, `origins` reports indexed eligible origins, and `validate` prints profile diagnostics. `stop` ends the current encounter without victory rewards. Automatic encounter scheduling and default balance are unchanged.
+
+Since 1.0.3, temporary missing required mobs and obstructed spawn areas have a 30-second recovery window, and unsuccessful encounters report a reason in chat/server logs. See [the changelog](CHANGELOG.md) and [release notes](RELEASE_NOTES.md).
+
 ## Configuration
 
 The server creates `incursions-server.toml`. The tested loader used `config/incursions-server.toml`; also check a world's `serverconfig` folder when using a loader or setup that stores server configs there. Stop the game or server before editing files.
