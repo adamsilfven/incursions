@@ -3,7 +3,6 @@ package dev.incursions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import java.lang.reflect.InvocationTargetException;
 
 /** Optional Stargate Journey integration. Nothing is linked when that mod is absent. */
 final class StargateJourneySupport {
@@ -18,12 +17,12 @@ final class StargateJourneySupport {
             && call(blockEntity, "getStargate") != null;
     }
 
-    static boolean incoming(ServerLevel level, BlockPos pos) {
+    static boolean active(ServerLevel level, BlockPos pos) {
         if (!exists(level, pos)) return false;
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (!Boolean.TRUE.equals(call(blockEntity, "isWormholeOpen"))) return false;
         Object state = call(blockEntity, "getConnectionState");
-        return state instanceof Enum<?> direction && direction.name().equals("INCOMING_CONNECTION");
+        return state instanceof Enum<?> direction && (direction.name().equals("INCOMING_CONNECTION") || direction.name().equals("OUTGOING_CONNECTION"));
     }
 
     private static Object call(Object target, String method) {

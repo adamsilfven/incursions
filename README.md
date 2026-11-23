@@ -2,7 +2,7 @@
 
 Portals let you into other worlds. Incursions gives those worlds a chance to return the favor.
 
-Incursions adds hostile encounters around active Nether portals and, when installed, portals from The Aether, The Undergarden, and Twilight Forest. When Stargate Journey is installed, incoming open Stargates can also start Jaffa incursions. A lodestone surrounded by eight matching stairs can also act as an anchor. Encounters arrive in waves, sometimes with enhanced enemies, and beating them earns loot worth fighting for.
+Incursions adds hostile encounters around active Nether portals and, when installed, portals from The Aether, The Undergarden, and Twilight Forest. When Stargate Journey is installed, open Stargates can also start Jaffa incursions. A lodestone surrounded by eight matching stairs can also act as an anchor. Encounters arrive in waves, sometimes with enhanced enemies, and beating them earns loot worth fighting for.
 
 Only one incursion can run at a time. All portal types share an 18-minute cooldown after an encounter ends, so building more portals does not turn the whole thing into a loot conveyor belt. Optional dimensions stay optional; the Nether works on its own.
 
@@ -40,7 +40,7 @@ Commands require operator permission level 2 and are executed on the server:
 
 Use `/incursions trigger <nether|aether|undergarden|twilight|stargate> [elite]` for any supported dimension profile. The `elite` suffix requests an immediate forced elite. A trigger works only when that profile is available and has an eligible active portal or lodestone anchor. `status` shows encounter/cooldown state, `origins` reports indexed eligible origins, and `validate` prints profile diagnostics. `stop` ends the current encounter without victory rewards. Automatic encounter scheduling and default balance are unchanged.
 
-Stargate incursions require Stargate Journey 0.6.55 (Minecraft 1.21.1), a complete Stargate with an open **incoming** wormhole, and nearby players. Outgoing, closed, or unassembled Stargates do not qualify. An incursion already underway may continue after the wormhole closes naturally; breaking the gate base ends it. Jaffa arrive with their normal armor and staff weapons. The shared 18-minute cooldown and all existing profiles are unchanged.
+Stargate incursions require Stargate Journey 0.6.55 (Minecraft 1.21.1), a complete Stargate with an open wormhole, and nearby players. Either end of an open connection qualifies; closed or unassembled Stargates do not. An incursion already underway may continue after the wormhole closes naturally; breaking the gate base ends it. Jaffa arrive with their normal armor and staff weapons. The shared 18-minute cooldown and all existing profiles are unchanged.
 
 Since 1.0.3, temporary missing required mobs and obstructed spawn areas have a 30-second recovery window, and unsuccessful encounters report a reason in chat/server logs. See [the changelog](CHANGELOG.md) and [release notes](RELEASE_NOTES.md).
 

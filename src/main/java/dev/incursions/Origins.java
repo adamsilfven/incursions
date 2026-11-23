@@ -161,7 +161,7 @@ final class Origins {
     List<Site> eligible(Definitions.Profile profile, List<ServerPlayer> players) {
         Set<ResourceLocation> bindings=new HashSet<>();profile.origins().forEach(o->bindings.add(o.id()));
         return sites.values().stream().filter(s->bindings.contains(s.definition.id()) && s.intact() && players.stream().anyMatch(p->s.near(p,96)))
-            .filter(s->!s.definition.provider().equals("stargate") || StargateJourneySupport.incoming(s.level(),s.center()))
+            .filter(s->!s.definition.provider().equals("stargate") || StargateJourneySupport.active(s.level(),s.center()))
             .filter(s->accessible.computeIfAbsent(s.key(),key->!SpawnSpace.reachable(s,.6f,1.8f,false,players).isEmpty())).toList();
     }
     int count() { return sites.size(); }

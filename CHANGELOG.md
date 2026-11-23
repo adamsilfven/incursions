@@ -2,7 +2,7 @@
 
 ## 1.0.4 (compatibility candidate)
 
-- Optional Stargate Journey 0.6.55 integration for incoming, open Stargates (Milky Way, Pegasus, Universe, Classic, Tollan, and Andromeda).
+- Optional Stargate Journey 0.6.55 integration for open Stargates (incoming or outgoing) (Milky Way, Pegasus, Universe, Classic, Tollan, and Andromeda).
 - Jaffa attacks use the existing Incursions wave and reward systems; Jaffa keep their normal staff weapons and armor.
 - `/incursions trigger stargate [elite]` for operators when an eligible Stargate is nearby.
 - Gate activation is required to start an incursion, not to finish one. Closed gates do not trigger, but encounters in progress are not cancelled when a wormhole times out.
