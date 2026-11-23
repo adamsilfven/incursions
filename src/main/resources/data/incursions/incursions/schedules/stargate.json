@@ -1,0 +1,12 @@
+{
+  "kind": "wave_schedule",
+  "required_mod": "sgjourney",
+  "min_waves": 2,
+  "max_waves": 2,
+  "window_seconds": 8,
+  "interwave_ticks": 120,
+  "zero_probability": 0.2,
+  "one_probability": 0.55,
+  "two_probability": 0.25,
+  "spawn_interval_ticks": 40
+}

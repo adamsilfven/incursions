@@ -1,0 +1,30 @@
+{
+  "kind": "profile",
+  "origins": [
+    "incursions:origins/stargate_milky_way",
+    "incursions:origins/stargate_pegasus",
+    "incursions:origins/stargate_universe",
+    "incursions:origins/stargate_classic",
+    "incursions:origins/stargate_tollan",
+    "incursions:origins/stargate_andromeda"
+  ],
+  "creature_pool": "incursions:pools/stargate",
+  "reward_pool": "incursions:rewards/stargate",
+  "trigger_chance": 0.05,
+  "nether_first": false,
+  "elite_chance": 0.15,
+  "elite_delay_ticks": 200,
+  "elite_health_multiplier": 1.75,
+  "elite_damage_multiplier": 1.3,
+  "opening_title": "Jaffa Are Coming Through the Stargate!",
+  "particle": "minecraft:portal",
+  "scaling": "GLOBAL",
+  "per_player_rewards": false,
+  "required_mod": "sgjourney",
+  "wave_schedule": "incursions:schedules/stargate",
+  "opening_sound": "minecraft:block.portal.trigger",
+  "victory_sound": "minecraft:ui.toast.challenge_complete",
+  "elite_sound": "minecraft:entity.evoker.prepare_attack",
+  "elite_name_color": "gold",
+  "zero_pair_sound": "minecraft:block.end_portal.spawn"
+}

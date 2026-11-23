@@ -49,7 +49,7 @@ final class SpawnSpace {
         for(BlockPos block:interior) for(Direction d:Direction.Plane.HORIZONTAL) {
             BlockPos p=block.relative(d);
             if(interior.contains(p)) continue;
-            if(site.definition().provider().equals("anchor") || site.definition().provider().equals("horizontal")) p=p.above();
+            if(site.definition().provider().equals("anchor") || site.definition().provider().equals("horizontal") || site.definition().provider().equals("stargate")) p=p.above();
             for(int dy=-1;dy<=1;dy++) {
                 BlockPos seed=p.offset(0,dy,0);
                 if(clear(site,seed,width,height,flying)) seeds.add(seed);

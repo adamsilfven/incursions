@@ -47,4 +47,22 @@ class ReleaseDefaultsTest {
    }
   }
  }
+ @Test void stargateJourneyIsOptionalAndDoesNotChangeExistingProfiles()throws Exception {
+  var profile=read("profiles","stargate");
+  assertEquals("sgjourney",profile.get("required_mod").getAsString());
+  assertEquals(.05,profile.get("trigger_chance").getAsDouble());
+  assertFalse(profile.get("nether_first").getAsBoolean());
+  assertEquals(6,profile.getAsJsonArray("origins").size());
+  for(String type:List.of("milky_way","pegasus","universe","classic","tollan","andromeda")){
+   var o=read("origins","stargate_"+type);
+   assertEquals("stargate",o.get("provider").getAsString());
+   assertEquals("sgjourney:"+type+"_stargate",o.get("block").getAsString());
+   assertEquals("sgjourney",o.get("required_mod").getAsString());
+  }
+  var pool=read("pools","stargate");
+  assertEquals("sgjourney",pool.get("required_mod").getAsString());
+  assertEquals("sgjourney:jaffa",pool.getAsJsonArray("entries").get(0).getAsJsonObject().get("entity").getAsString());
+  assertEquals(40,Definitions.interval(read("schedules","stargate")));
+  assertEquals("sgjourney:chests/jaffa_house",read("rewards","stargate").getAsJsonArray("entries").get(0).getAsJsonObject().get("table").getAsString());
+ }
 }

@@ -205,7 +205,9 @@ final class Encounter implements Rules.World {
         if(positions.isEmpty()) {mob.discard();return false;}
         var pos=positions.get(director.rng.nextInt(positions.size()));
         mob.moveTo(pos.x,pos.y,pos.z,director.rng.nextFloat()*360,0);
-        mob.finalizeSpawn(site.level(),site.level().getCurrentDifficultyAt(mob.blockPosition()),MobSpawnType.EVENT,null);
+        // Jaffa only receive their standard armor when spawned with a non-EVENT reason.
+        MobSpawnType reason = entry.entity().toString().equals("sgjourney:jaffa") ? MobSpawnType.COMMAND : MobSpawnType.EVENT;
+        mob.finalizeSpawn(site.level(),site.level().getCurrentDifficultyAt(mob.blockPosition()),reason,null);
         AdultSpawns.normalize(mob);
         if(mob.isBaby()) {mob.discard();Incursions.LOG.warn("{}: cannot normalize baby entity {}; spawn rejected",id,entry.entity());return false;}
         // Incursions never spawns riders, even if an entity's normal spawn preparation creates one.

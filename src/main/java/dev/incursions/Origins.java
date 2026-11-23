@@ -91,6 +91,10 @@ final class Origins {
         Map<BlockPos,Block> required=new HashMap<>();
         Block expected=BuiltInRegistries.BLOCK.get(o.block());
         if(!level.hasChunkAt(pos) || !level.getBlockState(pos).is(expected)) return null;
+        if(o.provider().equals("stargate")) {
+            if (!StargateJourneySupport.exists(level,pos)) return null;
+            return new Site(level,o,pos.immutable(),Map.of(pos.immutable(),expected));
+        }
         if(o.provider().equals("anchor")) {
             Block stairs=null;
             for(int dx=-1;dx<=1;dx++) for(int dz=-1;dz<=1;dz++) {
@@ -125,6 +129,7 @@ final class Origins {
     }
     static boolean validFrame(Site site) {
         if(site.definition.provider().equals("anchor")) return true;
+        if(site.definition.provider().equals("stargate")) return StargateJourneySupport.exists(site.level(),site.center());
         if(site.definition.provider().equals("horizontal")) {
             for(var p:site.required.keySet()) {
                 if(!site.level.hasChunkAt(p.below()) || !site.level.getBlockState(p.below()).isFaceSturdy(site.level,p.below(),Direction.UP)) return false;
@@ -156,6 +161,7 @@ final class Origins {
     List<Site> eligible(Definitions.Profile profile, List<ServerPlayer> players) {
         Set<ResourceLocation> bindings=new HashSet<>();profile.origins().forEach(o->bindings.add(o.id()));
         return sites.values().stream().filter(s->bindings.contains(s.definition.id()) && s.intact() && players.stream().anyMatch(p->s.near(p,96)))
+            .filter(s->!s.definition.provider().equals("stargate") || StargateJourneySupport.active(s.level(),s.center()))
             .filter(s->accessible.computeIfAbsent(s.key(),key->!SpawnSpace.reachable(s,.6f,1.8f,false,players).isEmpty())).toList();
     }
     int count() { return sites.size(); }

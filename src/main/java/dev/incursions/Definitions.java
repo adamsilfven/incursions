@@ -67,7 +67,7 @@ public final class Definitions extends SimpleJsonResourceReloadListener {
                 switch (str(j,"kind")) {
                     case "origin" -> {
                         String provider = str(j,"provider");
-                        if (!Set.of("vertical", "horizontal", "anchor").contains(provider)) throw new IllegalArgumentException("provider: expected vertical, horizontal, or anchor");
+                        if (!Set.of("vertical", "horizontal", "anchor", "stargate").contains(provider)) throw new IllegalArgumentException("provider: expected vertical, horizontal, anchor, or stargate");
                         ResourceLocation block = id(str(j,"block"));
                         if (!BuiltInRegistries.BLOCK.containsKey(block)) throw new IllegalArgumentException("block: unknown " + block);
                         Set<ResourceLocation> dimensions = new HashSet<>();

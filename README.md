@@ -2,7 +2,7 @@
 
 Portals let you into other worlds. Incursions gives those worlds a chance to return the favor.
 
-Incursions adds hostile encounters around active Nether portals and, when installed, portals from The Aether, The Undergarden, and Twilight Forest. A lodestone surrounded by eight matching stairs can also act as an anchor. Encounters arrive in waves, sometimes with enhanced enemies, and beating them earns loot worth fighting for.
+Incursions adds hostile encounters around active Nether portals and, when installed, portals from The Aether, The Undergarden, and Twilight Forest. When Stargate Journey is installed, open Stargates can also start Jaffa incursions. A lodestone surrounded by eight matching stairs can also act as an anchor. Encounters arrive in waves, sometimes with enhanced enemies, and beating them earns loot worth fighting for.
 
 Only one incursion can run at a time. All portal types share an 18-minute cooldown after an encounter ends, so building more portals does not turn the whole thing into a loot conveyor belt. Optional dimensions stay optional; the Nether works on its own.
 
@@ -12,7 +12,7 @@ Only one incursion can run at a time. All portal types share an 18-minute cooldo
 - NeoForge 21.1.259 or newer within the 21.1.x series
 - Java 21
 
-The Aether, The Undergarden, and Twilight Forest are optional integrations. Incursions does not require another custom mod or a particular modpack.
+The Aether, The Undergarden, Twilight Forest, and Stargate Journey are optional integrations. Incursions does not require another custom mod or a particular modpack.
 
 ## Installation
 
@@ -20,7 +20,7 @@ Install the release JAR in the server's `mods` folder, or in your client for sin
 
 The encounters run on the server. Clients can join without installing Incursions; install it on the client as well to use its pause-menu settings button. Server operators and the single-player owner can change the enable setting. Other players cannot change the server's setting.
 
-## Operator commands (1.0.3)
+## Operator commands (1.0.4)
 
 Commands require operator permission level 2 and are executed on the server:
 
@@ -30,13 +30,17 @@ Commands require operator permission level 2 and are executed on the server:
 /incursions trigger aether
 /incursions trigger undergarden
 /incursions trigger twilight
+/incursions trigger stargate
+/incursions trigger stargate elite
 /incursions status
 /incursions origins
 /incursions validate
 /incursions stop
 ```
 
-Use `/incursions trigger <nether|aether|undergarden|twilight> [elite]` for any supported dimension profile. The `elite` suffix requests an immediate forced elite. A trigger works only when that profile is available and has an eligible active portal or lodestone anchor. `status` shows encounter/cooldown state, `origins` reports indexed eligible origins, and `validate` prints profile diagnostics. `stop` ends the current encounter without victory rewards. Automatic encounter scheduling and default balance are unchanged.
+Use `/incursions trigger <nether|aether|undergarden|twilight|stargate> [elite]` for any supported dimension profile. The `elite` suffix requests an immediate forced elite. A trigger works only when that profile is available and has an eligible active portal or lodestone anchor. `status` shows encounter/cooldown state, `origins` reports indexed eligible origins, and `validate` prints profile diagnostics. `stop` ends the current encounter without victory rewards. Automatic encounter scheduling and default balance are unchanged.
+
+Stargate incursions require Stargate Journey 0.6.55 (Minecraft 1.21.1), a complete Stargate with an open wormhole, and nearby players. Either end of an open connection qualifies; closed or unassembled Stargates do not. An incursion already underway may continue after the wormhole closes naturally; breaking the gate base ends it. Jaffa arrive with their normal armor and staff weapons. The shared 18-minute cooldown and all existing profiles are unchanged.
 
 Since 1.0.3, temporary missing required mobs and obstructed spawn areas have a 30-second recovery window, and unsuccessful encounters report a reason in chat/server logs. See [the changelog](CHANGELOG.md) and [release notes](RELEASE_NOTES.md).
 
