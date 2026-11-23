@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.4 (compatibility candidate)
+
+- Optional Stargate Journey 0.6.55 integration for incoming, open Stargates (Milky Way, Pegasus, Universe, Classic, Tollan, and Andromeda).
+- Jaffa attacks use the existing Incursions wave and reward systems; Jaffa keep their normal staff weapons and armor.
+- `/incursions trigger stargate [elite]` for operators when an eligible Stargate is nearby.
+- Gate activation is required to start an incursion, not to finish one. Closed gates do not trigger, but encounters in progress are not cancelled when a wormhole times out.
+- Existing dimension pools, probabilities, cooldown, and rewards remain unchanged. Stargate Journey is optional.
+
+
+
 ## 1.0.3
 
 Release focus: encounter reliability and operator controls for Minecraft 1.21.1 / NeoForge 21.1.259+.

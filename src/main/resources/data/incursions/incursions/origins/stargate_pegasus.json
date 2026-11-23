@@ -1,0 +1,8 @@
+{
+  "kind": "origin",
+  "provider": "stargate",
+  "block": "sgjourney:pegasus_stargate",
+  "dimensions": [],
+  "emergence_radius": 8,
+  "required_mod": "sgjourney"
+}

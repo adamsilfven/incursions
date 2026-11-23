@@ -1,0 +1,11 @@
+{
+  "kind": "creature_pool",
+  "required_mod": "sgjourney",
+  "entries": [
+    {
+      "entity": "sgjourney:jaffa",
+      "weight": 100,
+      "flying": false
+    }
+  ]
+}

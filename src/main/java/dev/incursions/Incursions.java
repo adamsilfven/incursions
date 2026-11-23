@@ -49,7 +49,9 @@ public final class Incursions {
                 .then(Commands.literal("undergarden").executes(c->trigger(c.getSource(),"undergarden",false))
                     .then(Commands.literal("elite").executes(c->trigger(c.getSource(),"undergarden",true))))
                 .then(Commands.literal("twilight").executes(c->trigger(c.getSource(),"twilight",false))
-                    .then(Commands.literal("elite").executes(c->trigger(c.getSource(),"twilight",true)))))
+                    .then(Commands.literal("elite").executes(c->trigger(c.getSource(),"twilight",true))))
+                .then(Commands.literal("stargate").executes(c->trigger(c.getSource(),"stargate",false))
+                    .then(Commands.literal("elite").executes(c->trigger(c.getSource(),"stargate",true)))))
             .then(Commands.literal("stop").executes(c->{
                 c.getSource().sendSuccess(()->Component.literal(director==null?"Server not ready":director.cancel()),false);
                 return Command.SINGLE_SUCCESS;

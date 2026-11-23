@@ -1,0 +1,11 @@
+{
+  "kind": "reward_pool",
+  "required_mod": "sgjourney",
+  "entries": [
+    {
+      "table": "sgjourney:chests/jaffa_house",
+      "weight": 100,
+      "rolls": 1
+    }
+  ]
+}
